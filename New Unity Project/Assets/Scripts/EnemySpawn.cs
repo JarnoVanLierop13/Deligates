@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour {
-
+    public GameObject enemy;
+    public GameObject lastEnemy;
     
 	// Use this for initialization
 	void Start () {
-        Instantiate(gameObject);
+        lastEnemy = Instantiate(enemy);
 	}
 	
 	// Update is called once per frame
@@ -21,8 +22,8 @@ public class EnemySpawn : MonoBehaviour {
 	
     void EnemyRespawn()
     {
-        Destroy(gameObject);
-        Instantiate(gameObject);
+        Destroy(lastEnemy);
+        lastEnemy = Instantiate(enemy);
         Debug.Log("Enemy removed");
     }
 }
